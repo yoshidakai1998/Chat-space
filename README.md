@@ -3,7 +3,6 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |name|string|index: true,null: false, unique:true|
 |email|string|null: false, unique:true|
 |password|string|null: false|
@@ -17,7 +16,6 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |name|string|null: false, unique:true|
 
 ### Association
@@ -28,8 +26,8 @@
 ## membersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -42,8 +40,8 @@
 |------|----|-------|
 |body|text||
 |image|string||
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
