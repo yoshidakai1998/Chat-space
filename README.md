@@ -4,7 +4,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|name|string|null: false, unique:true|
+|name|string|index: true,null: false, unique:true|
 |email|string|null: false, unique:true|
 |password|string|null: false|
 
@@ -40,8 +40,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false, foreign_key: true|
-|image|string|null: false, foreign_key: true|
+|body|text||
+|image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
