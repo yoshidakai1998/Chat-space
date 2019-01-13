@@ -1,127 +1,179 @@
 @import "./reset";
+@import "font-awesome";
 
 .notification{
-	background-color: lightblue;
-	text-align: center;
-	color: white;
+  background-color: lightblue;
+  text-align: center;
+  color: white;
 }
 
 .chat-side{
-	height: 100vh;
-	width: 300px;
+  height: 100vh;
+  width: 300px;
+  float:left;
 
-	&__user{
-		background-color: #090c10;
-		height: 15%;
-		width:100%;
+  &__user{
+    background-color: #090c10;
+    height: 15%;
+    width:100%;
+    position: relative;
 
-		&-content{
-			height: 50px;
-			width: 100%;
-			line-height: 50px;
-		}
-		&-name{
-			font-size: 16px;
-			font-weight: bold;
-			color:white;
-		}
+      &-content{
+        height: 50px;
+        width: 100%;
+        line-height: 50px;
+        margin: auto 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+}
+      &-name{
+        font-size: 16px;
+        font-weight: bold;
+        color:white;
+        margin: 0 20px;
+        position: relative;
+        display: inline-block;
+}
 
-	}
-	&__groups{
-		background-color: #253141;
-		height:85%;
-		width:100%;
-		color:white;
-		&-list{
-			height:100%;
-			color: white;
-		}
-		    &__group{
-		    	padding: 20px;
-		    	padding-bottom: 5px;
-		    	&-name{
-		    		font-size: 15px;
-		    	}
-		    	&-message{
-		    		font-size:11px;
-		    	}
-		    }
+}
+  &__groups{
+    background-color: #253141;
+    height:85%;
+    width:100%;
+    color:white;
+    &-list{
+      height:100%;
+      color: white;
+}
+  &__group{
+    padding: 20px;
+    padding-bottom: 5px;
+  &-name{
+    font-size: 15px;
+}
+  &-message{
+  font-size:11px;
+}
+}
 
-	}
-
-
+}
 }
 
 .chat-main{
-	height:100vh;
-	width: calc(100vw - 300px);
-	float: right;
+  height:100vh;
+  width: calc(100vw - 300px);
+  float: right;
+  position: relative;
 
-	&__header{
-		height: 15%;
-		border-bottom: solid thin #eee;
-		&--group{
-			margin: 0 40px;
-			&-name{
-				margin: 46px 0 10px 0;
-				font-size:24px;
-				color: black;
-			}
+  &__header{
+    height: 15%;
+    border-bottom: solid thin #eee;
+    &--group{
+      margin: 0 40px;
+      &-name{
+        margin: 35px 0 15px 0;
+        font-size:20px;
+        color: black;
+        float: left;
+}
+      &-edit-btn {
+      	height:40px;
+      	line-height:40px;
+      	padding: 0 20px;
+        margin-top: 28px;
+        margin-left: 20px;
+        border: solid thin lightblue;
+        float: right;
+        text-decoration: none;
+        color: lightblue;
+      }
 
-		&-members{
-			font-size:12px;
-			color:gray;
-			margin: 0 40px;
+    &-members{
+      font-size:12px;
+      color:gray;
+      margin: 0 40px;
 
-		}
-	  }
+}
+}
 
-   }
+}
 
-   &__body{
-   	&--messages-list{
-   		margin-top: 26px;
-   		margin-left: 40px;
-   	}
-   }
-   &__message{
-   	 &-name{
-   	 	font-size:16px;
-   	 	font-weight:bold;
-   	 	color:#434A54;
-   	 }
-   	 &-time{
-   	 	font-size:12px;
-   	 	color:#999;
-   	 &-message{
-   	 	font-size:14px;
-   	 	color:#000;
-   	 }
-   	 }
-   }
-   &__footer{
-   	height:90px;
-   	width:100%;
-   	background-color:#B8C3C7;
-   	&-form{
-   		margin:0 40px;
-   	}
-   	&-body{
-   		&--message{
-   			height:50px;
-   			width: calc( 100% - 130px );
-   			padding: 20px 10px;
-   			margin: 20px 0 ;
-   			font-size: 16px;
-            color: $blackgray;
-   		}
-   	}
-   	.submit {
+  &__body{
+    &--messages-list{
+      margin-top: 26px;
+      margin-left: 40px;
+}
+}
+  &__message{
+  	padding : 20px 0;
+    &-name{
+      float:left;
+      font-size:16px;
+      font-weight:bold;
+      color:#434A54;
+}
+    &-time{
+      float:left;
+      font-size:12px;
+      padding: 0 10px 10px;
+      color:#999;
+    &-message{
+      clear: both;
+      font-size:14px;
+      color:#000;
+}
+}
+}
+  &__footer{
+    height:90px;
+    width:100%;
+    background-color:#B8C3C7;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    &-form{
+      margin:0 40px;
+      position: relative;
+}
+    &-body{
+      position: relative;
+      &--message{
+        height:50px;
+        width: calc( 100% - 130px );
+        padding: 20px 10px;
+        margin: 20px 0 ;
+        border: none;
+        font-size: 16px;
+        color: #808080;
+        box-sizing: border-box;
+}
+      .chat-file {
+        height: 50px;
+        width: 40px;
+        margin: 32px 130px 20px 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .image {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: none;
+      }
+}
+    .submit {
       color: white;
       width: 100px;
       height: 50px;
       text-align: center;
       background-color: lightblue;
       margin: 20px 0;
-   }
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+}
+}
 }
