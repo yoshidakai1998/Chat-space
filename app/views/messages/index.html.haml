@@ -17,7 +17,7 @@
 
       .chat-side__groups
         .chat-side__groups-list
-          = link_to '/groups/001/messages' do
+          = link_to '#' do
             .chat-side__group
               .chat-side__group-name
                 %p sampleグループ
@@ -54,63 +54,3 @@
               %input.image{type: "file", name: "message[image]", id: 'message_image'}
               = fa_icon "picture-o"
           %input.submit{ type: 'submit', name: 'commit', value: "Send" }
-
-
-
-
-
-
-
-/ .notification
-/   .notice
-/   チャットグループが作成されました。
-/ .chat-side
-/   .chat-side__user
-/     .chat-side__user-content
-/       .chat-side__user-name
-/         test
-/       .chat-side__user--new-group
-/         = fa_icon "pencil-square-o"
-/       .chat-side__user--edit-user
-/         = fa_icon "cog"
-
-/   .chat-side__groups
-/     .chat-side__groups-list
-/       = link_to '/groups/001/messages' do
-/         .chat-side__group
-/           .chat-side__group-name
-/             %p sampleグループ
-
-/           .chat-side__group-message
-/             %p まだメッセージはありません。
-
-/ .chat-main
-/   .chat-main__header
-/     .chat-main__header--group.clearfix
-/       .chat-main__header--group-name
-/         %p sampleグループ
-/       .chat-main__header-members
-/       MEMBER:
-/       メンバー
-
-/   .chat-main__body
-/     .chat-main__body--messages-list
-/       .chat-main__message.clearfix
-/         .chat-main__body--message-name
-/           testname
-/         .chat-main__body--message-time
-/           2019/01/10 20:00:00
-/         .chat-main__body--message-message
-/           Hello!
-/           .chat-main__message-body-image
-
-
-/   .chat-main__footer
-/     %form.chat-main__footer-form
-/       .chat-main__footer-body
-/         %input.message{ placeholder: 'type a message', type: 'text', name: 'message[body]',id: 'message_body' }
-/         %label.chat-file{for: "message_image"}
-/           %input.image{type: "file", name: "message[image]", id: 'message_image'}
-/           = fa_icon "picture-o"
-/       %input.submit{ type: 'submit',name: 'commit',value: 'send'}
-
