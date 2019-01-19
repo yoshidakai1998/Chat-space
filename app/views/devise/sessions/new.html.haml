@@ -6,12 +6,12 @@
       = render "devise/shared/links"
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
+        .range
           .field-label
             = f.label :email
           .field-input
             = f.email_field :email, autofocus: true
-          .field
+          .range
             .field-label
               = f.label :password
               %i (英数字8文字以上)
