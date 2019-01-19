@@ -9,11 +9,12 @@
       .chat-side__user
         .chat-side__user-content
           .chat-side__user-name
-            testname
+            = current_user.name
           .chat-side__user--new-group
             = fa_icon "pencil-square-o"
           .chat-side__user--edit-user
-            = fa_icon "cog"
+            = link_to edit_user_path(current_user) do
+              = fa_icon "cog"
 
       .chat-side__groups
         .chat-side__groups-list
