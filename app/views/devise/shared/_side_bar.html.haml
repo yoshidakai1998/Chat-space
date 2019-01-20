@@ -15,7 +15,8 @@
       .chat-side__group
         - current_user.groups.each do |group|
           = link_to group_messages_path(group) do
-        .chat-side__group-name
-          = group.name
-        .chat-side__group-message
-          %p まだメッセージはありません
+            .chat-side__group-name
+              = group.name
+            .chat-side__group-message
+              まだメッセージはありません
+
