@@ -1,11 +1,13 @@
 .chat-group-form
   %h1 新規チャットグループ
-  %form#new_chat_group.new_chat_group{"accept-charset" => "UTF-8", :action => "/chat_groups", :method => "post"}
-    .chat-group-form__errors
-      %h2
-        1件のエラーが発生しました。
+  = form_for @group do |f|
+    - if @group.errors.any?
+      .chat-group-form__errors
+        %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
         %ul
-          %li エラーです
+          - @group.errors.full_messages.each do |message|
+          %li= message
+
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         %label.chat-group-form__label{:for => "chat_group_name"} グループ名
@@ -28,6 +30,7 @@
         %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
       .chat-group-form__field--right
         / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+        = f.collection_check_boxes :user_ids, User.all, :id, :name
         / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
         /
           <div id='chat-group-users'>
