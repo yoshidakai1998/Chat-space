@@ -1,0 +1,30 @@
+.chat-main
+  .chat-main__header
+    .chat-main__header--group.clearfix
+      .chat-main__header--group-name
+        sampleグループ
+      = link_to '/groups/001/edit', class: 'chat-main__header--group-edit-btn' do
+        edit
+    .chat-main__header-members
+      MEMBER:
+      %i メンバー
+
+  .chat-main__body
+    .chat-main__body--messages-list
+      .chat-main__message.clearfix
+        .chat-main__message-name
+          test
+        .chat-main__message-time
+          2018/12/10 20:00:00
+        .chat-main__message-message
+          Hello!
+          .chat-main__message-body-image
+
+  .chat-main__footer
+    %form.chat-main__footer-form
+      .chat-main__footer-body
+        %input.message{ placeholder: 'type a message', type: 'text', name: 'message[body]',id: 'message_body' }
+        %label.chat-file{for: "message_image"}
+          %input.image{type: "file", name: "message[image]", id: 'message_image'}
+          = fa_icon "picture-o"
+      %input.submit{ type: 'submit', name: 'commit', value: "Send" }
