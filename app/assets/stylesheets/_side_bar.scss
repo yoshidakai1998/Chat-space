@@ -1,11 +1,12 @@
 .side-bar {
   box-sizing: border-box;
   color: $white;
+  height: 100vh;
   width: 300px;
   float: left;
   .header {
     background-color: $side_blue_dark;
-    height: 100px;
+    height: 15%;
     line-height: 100px;
     padding: 0 20px;
     &__name {
