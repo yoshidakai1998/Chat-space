@@ -4,4 +4,9 @@ class MessagesController < ApplicationController
       @group = Group.new
 	end
 
+	def create
+	end
+
 end
+
+
