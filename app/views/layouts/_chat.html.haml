@@ -1,30 +1,27 @@
-.chat-main
-  .chat-main__header
-    .chat-main__header--group.clearfix
-      .chat-main__header--group-name
-        sampleグループ
-      = link_to '/groups/001/edit', class: 'chat-main__header--group-edit-btn' do
+.chat
+  .header
+    .left-header
+      .left-header__title
+        = @group.name
+      .left-header__members
+        .member
+          MEMBER:
+          %i
+          - @group.users.each do |user|
+            = user.name
+
+    .right-header
+      = link_to edit_group_path(@group), class: 'right-header__button'
         edit
-    .chat-main__header-members
-      MEMBER:
-      %i メンバー
 
-  .chat-main__body
-    .chat-main__body--messages-list
-      .chat-main__message.clearfix
-        .chat-main__message-name
-          test
-        .chat-main__message-time
-          2018/12/10 20:00:00
-        .chat-main__message-message
-          Hello!
-          .chat-main__message-body-image
+  .messages
+    = render @messages
 
-  .chat-main__footer
-    %form.chat-main__footer-form
-      .chat-main__footer-body
-        %input.message{ placeholder: 'type a message', type: 'text', name: 'message[body]',id: 'message_body' }
-        %label.chat-file{for: "message_image"}
-          %input.image{type: "file", name: "message[image]", id: 'message_image'}
-          = fa_icon "picture-o"
-      %input.submit{ type: 'submit', name: 'commit', value: "Send" }
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
