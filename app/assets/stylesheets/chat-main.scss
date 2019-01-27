@@ -42,21 +42,21 @@
   }
 
   .messages {
-  background-color: #FAFAFA;
-  box-sizing: border-box;
-  padding: 46px 40px 0;
-  height: calc(100% - 100px - 90px);
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    padding: 46px 40px 0;
+    height: calc(100% - 100px - 90px);
   }
 
   .form {
-  background-color: $light_gray;
-  box-sizing: border-box;
-  height: 90px;
-  width: calc(100vw - 300px);
-  padding: 20px 50px 20px 40px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+    background-color: $light_gray;
+    box-sizing: border-box;
+    height: 90px;
+    width: calc(100vw - 300px);
+    padding: 20px 50px 20px 40px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
   &__message {
     border: none;
     float: left;
@@ -90,3 +90,4 @@
     }
   }
 }
+

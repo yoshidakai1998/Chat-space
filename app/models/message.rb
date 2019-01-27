@@ -8,5 +8,3 @@ class Message < ApplicationRecord
 
 end
 
-
-
