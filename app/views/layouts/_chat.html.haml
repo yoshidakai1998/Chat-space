@@ -2,14 +2,16 @@
   .header
     .left-header
       .left-header__title
-        sampleグループ
+        = @group.name
       .left-header__members
         .member
           MEMBER:
-          %i user01
+          %i
+          - @group.users.each do |user|
+            = user.name
 
     .right-header
-      = link_to '/groups/1/edit', class: 'right-header__button' do
+      = link_to edit_group_path(@group), class: 'right-header__button' do
         edit
 
   .messages
