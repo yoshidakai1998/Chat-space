@@ -26,9 +26,9 @@ describe MessagesController do
   	end
 
   	context '非ログイン時' do
-  		before do
-  	      get :index, params: { group_id: group.id }
-  	  end
+  	  before do
+  	  get :index, params: { group_id: group.id }
+  	end
 
   	  it 'redirects to new_user_session_path' do
   	  	expect(response).to redirect_to(new_user_session_path)
@@ -46,8 +46,8 @@ describe MessagesController do
 
   	  context 'セーブ成功' do
   	  	subject {
-  	  		post :create,
-  	  		params: params
+  	  	  post :create,
+  	  	  params: params
   	  	}
 
   	  	it 'count up message' do
@@ -64,8 +64,8 @@ describe MessagesController do
   	  	let(:invalid_params) { { group_id: group.id, user_id: user.id, message: attributes_for(:message, content: nil, image: nil) } }
 
   	  	subject{
-  	  		post :create,
-  	  		params: invalid_params
+  	  	  post :create,
+  	  	  params: invalid_params
   	  	}
 
   	  	it 'does not count up' do
