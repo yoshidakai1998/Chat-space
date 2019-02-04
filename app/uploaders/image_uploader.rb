@@ -7,14 +7,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-<<<<<<< Updated upstream
+# <<<<<<< Updated upstream
+#   process resize_to_fit: [400, 400]
+# =======
+# <<<<<<< HEAD
   process resize_to_fit: [400, 400]
-=======
-<<<<<<< HEAD
-  process resize_to_fit: [400, 400]
-=======
->>>>>>> origin/add-function-send-message-asynchronous-communication
->>>>>>> Stashed changes
+# =======
+# >>>>>>> origin/add-function-send-message-asynchronous-communication
+# >>>>>>> Stashed changes
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
