@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message){
     image = (message.image === null) ? "" : `<img src="${message.image}" class="lower-message__image">`
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -14,6 +14,7 @@ $(document).on('turbolinks:load', function() {
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
+                   </div>
                   </div>
                   ${image}`
     return html;
@@ -44,4 +45,33 @@ $(document).on('turbolinks:load', function() {
       $('.form__submit').prop('disabled',false);
     })
   })
-});
+
+  var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var last_message_id = $('.message:last').data('message-id') || 0;
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id: last_message_id },
+        dataType: 'json'
+      })
+      .done(function(data) {
+
+        var id = $('.message').data('message-id')
+        var insertHTML = '';
+        data.forEach(function(message) {
+          if (message.id > id ) {
+            insertHTML = buildHTML(message);
+            $('.messages').append(insertHTML);
+            $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+          }
+        });
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました');
+      });
+    } else {
+      clearInterval(interval);
+    }}, 5000 );
+  });
+
