@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
 
 var search_list = $("#user-search-result");
 
-function searchUser(user) {
+function addSearchUserHTML(user) {
   var html = `<div class="chat-group-user clearfix">
                 <p class="chat-group-user__name">${ user.name }</p>
                 <a class="user-search-add chat-group-user__btn  chat-group-user__btn--add" data-user-id=${ user.id } data-user-name=${ user.name }>追加</a>
@@ -42,7 +42,7 @@ function addUser(id, name) {
       $("#user-search-result").empty();
       if (users.length !== 0) {
         users.forEach(function(user){
-          searchUser(user);
+          addSearchUserHTML(user);
         });
       }
       else {
