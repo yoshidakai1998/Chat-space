@@ -14,9 +14,9 @@ $(document).on('turbolinks:load', function() {
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
-                   </div>
                   </div>
-                  ${image}`
+                </div>
+                ${image}`
     return html;
   }
 
@@ -34,25 +34,24 @@ $(document).on('turbolinks:load', function() {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
       $('#new_message')[0].reset()
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function(){
-      alert('error');
+      alert('メッセージの送信に失敗しました');
     })
-    .always(function(message) {
+    .always(function() {
       $('.form__submit').prop('disabled',false);
     })
   })
 
   var interval = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $('.message:last').data('message-id') || 0;
+      var lastMessageId = $('.message:last').data('message-id') || 0;
       $.ajax({
         url: location.href,
         type: 'GET',
-        data: { id: last_message_id },
+        data: { id: lastMessageId },
         dataType: 'json'
       })
       .done(function(data) {
@@ -60,11 +59,9 @@ $(document).on('turbolinks:load', function() {
         var id = $('.message').data('message-id')
         var insertHTML = '';
         data.forEach(function(message) {
-          if (message.id > id ) {
-            insertHTML = buildHTML(message);
-            $('.messages').append(insertHTML);
-            $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
-          }
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         });
       })
       .fail(function(data) {
@@ -73,5 +70,4 @@ $(document).on('turbolinks:load', function() {
     } else {
       clearInterval(interval);
     }}, 5000 );
-  });
-
+});
