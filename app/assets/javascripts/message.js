@@ -54,11 +54,11 @@ $(document).on('turbolinks:load', function() {
         data: { id: lastMessageId },
         dataType: 'json'
       })
-      .done(function(json) {
+      .done(function(new_message_json) {
 
         var id = $('.message').data('message-id')
         var insertHTML = '';
-        json.forEach(function(message) {
+        new_message_json.forEach(function(message) {
           insertHTML = buildMessageHTML(message);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
