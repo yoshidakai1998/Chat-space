@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  function buildHTML(message){
+  function buildMessageHTML(message){
     image = (message.image === null) ? "" : `<img src="${message.image}" class="lower-message__image">`
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
@@ -54,12 +54,12 @@ $(document).on('turbolinks:load', function() {
         data: { id: lastMessageId },
         dataType: 'json'
       })
-      .done(function(data) {
+      .done(function(json) {
 
         var id = $('.message').data('message-id')
         var insertHTML = '';
-        data.forEach(function(message) {
-          insertHTML = buildHTML(message);
+        json.forEach(function(message) {
+          insertHTML = buildMessageHTML(message);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         });
