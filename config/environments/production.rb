@@ -8,6 +8,9 @@ Rails.application.configure do
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
+
+  server '52.199.16.144', user: 'ec2-user', roles: %w{app db web}
+
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
