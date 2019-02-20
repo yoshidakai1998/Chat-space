@@ -9,7 +9,6 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
 
-  server '52.199.16.144', user: 'ec2-user', roles: %w{app db web}
 
   config.eager_load = true
 
