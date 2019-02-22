@@ -64,6 +64,11 @@ $(document).on('turbolinks:load', function() {
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         });
       })
+
+      $('form__submit').on('dblclick', function(){
+        alert('メッセージを入力してください');
+        });
+
       .fail(function(data) {
         alert('自動更新に失敗しました');
       });
@@ -71,3 +76,5 @@ $(document).on('turbolinks:load', function() {
       clearInterval(interval);
     }}, 5000 );
 });
+
+
