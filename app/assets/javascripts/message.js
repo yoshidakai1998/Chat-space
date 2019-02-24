@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  function buildMessageHTML(message){
+  function buildHTML(message){
     image = (message.image === null) ? "" : `<img src="${message.image}" class="lower-message__image">`
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
@@ -19,7 +19,6 @@ $(document).on('turbolinks:load', function() {
                 ${image}`
     return html;
   }
-
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -54,21 +53,16 @@ $(document).on('turbolinks:load', function() {
         data: { id: lastMessageId },
         dataType: 'json'
       })
-      .done(function(new_message_json) {
+      .done(function(data) {
 
         var id = $('.message').data('message-id')
         var insertHTML = '';
-        new_message_json.forEach(function(message) {
-          insertHTML = buildMessageHTML(message);
+        data.forEach(function(message) {
+          insertHTML = buildHTML(message);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
         });
       })
-
-      $('form__submit').on('dblclick', function(){
-        alert('メッセージを入力してください');
-        });
-
       .fail(function(data) {
         alert('自動更新に失敗しました');
       });
@@ -76,5 +70,4 @@ $(document).on('turbolinks:load', function() {
       clearInterval(interval);
     }}, 5000 );
 });
-
 
